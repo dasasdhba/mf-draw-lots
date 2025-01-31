@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://d1ahaaef42ac1"]
+
+[ext_resource type="FontFile" uid="uid://bb1shc6kfyblp" path="res://asset/sarasa.ttf" id="1_jtl1a"]
+
+[resource]
+default_font = ExtResource("1_jtl1a")
+default_font_size = 20

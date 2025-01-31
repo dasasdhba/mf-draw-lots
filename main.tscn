@@ -1,0 +1,181 @@
+[gd_scene load_steps=8 format=3 uid="uid://dgwncda3jvfcx"]
+
+[ext_resource type="Theme" uid="uid://d1ahaaef42ac1" path="res://asset/theme.tres" id="1_smlgu"]
+[ext_resource type="Script" path="res://dev/main.gd" id="2_jr5ls"]
+[ext_resource type="Script" path="res://dev/pool_setting.gd" id="3_50a6u"]
+[ext_resource type="Texture2D" uid="uid://c6yh2eya18aqe" path="res://asset/menu_button.png" id="3_lm8qp"]
+[ext_resource type="Script" path="res://dev/pool_list.gd" id="4_cb7b1"]
+[ext_resource type="PackedScene" uid="uid://hybn3mi4aa16" path="res://node/pool_item.tscn" id="4_lrh8i"]
+[ext_resource type="Script" path="res://dev/ratio.gd" id="7_lkwog"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_smlgu")
+script = ExtResource("2_jr5ls")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 320.0
+offset_bottom = 109.0
+theme_override_font_sizes/font_size = 32
+text = "玩家列表"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 832.0
+offset_top = 64.0
+offset_right = 1088.0
+offset_bottom = 109.0
+theme_override_font_sizes/font_size = 32
+text = "抽签结果"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 16.0
+offset_right = 704.0
+offset_bottom = 61.0
+theme_override_font_sizes/font_size = 32
+text = "身份池
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerList" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 320.0
+offset_bottom = 512.0
+placeholder_text = "输入玩家名"
+
+[node name="Result" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 832.0
+offset_top = 128.0
+offset_right = 1088.0
+offset_bottom = 512.0
+placeholder_text = "抽签结果"
+editable = false
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 544.0
+offset_right = 256.0
+offset_bottom = 608.0
+theme_override_font_sizes/font_size = 40
+text = "抽签"
+
+[node name="Copy" type="Button" parent="."]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 544.0
+offset_right = 1024.0
+offset_bottom = 608.0
+theme_override_font_sizes/font_size = 40
+text = "复制"
+
+[node name="PoolSetting" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_50a6u")
+
+[node name="Label" type="Label" parent="PoolSetting"]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 96.0
+offset_right = 416.0
+offset_bottom = 128.0
+text = "预设
+"
+
+[node name="MenuButton" type="MenuButton" parent="PoolSetting"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 96.0
+offset_right = 576.0
+offset_bottom = 132.0
+clip_text = true
+
+[node name="Sprite2D" type="Sprite2D" parent="PoolSetting/MenuButton"]
+position = Vector2(12, 18.0816)
+scale = Vector2(1.26316, 1.88614)
+texture = ExtResource("3_lm8qp")
+
+[node name="LineEdit" type="LineEdit" parent="PoolSetting"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 96.0
+offset_right = 552.0
+offset_bottom = 132.0
+placeholder_text = "default"
+context_menu_enabled = false
+
+[node name="Load" type="Button" parent="PoolSetting"]
+layout_mode = 0
+offset_left = 592.0
+offset_top = 96.0
+offset_right = 640.0
+offset_bottom = 132.0
+text = "载入"
+
+[node name="Save" type="Button" parent="PoolSetting"]
+layout_mode = 0
+offset_left = 656.0
+offset_top = 96.0
+offset_right = 704.0
+offset_bottom = 132.0
+text = "保存"
+
+[node name="Delete" type="Button" parent="PoolSetting"]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 96.0
+offset_right = 768.0
+offset_bottom = 132.0
+text = "删除"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PoolSetting"]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 160.0
+offset_right = 768.0
+offset_bottom = 512.0
+horizontal_scroll_mode = 0
+
+[node name="Control" type="Control" parent="PoolSetting/ScrollContainer"]
+layout_mode = 2
+script = ExtResource("4_cb7b1")
+item_scene = ExtResource("4_lrh8i")
+
+[node name="New" type="Button" parent="PoolSetting/ScrollContainer/Control"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 32.0
+offset_right = 119.0
+offset_bottom = 74.0
+theme_override_font_sizes/font_size = 24
+text = "新建"
+
+[node name="Ratio" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 368.0
+offset_top = 528.0
+offset_right = 368.0
+offset_bottom = 528.0
+script = ExtResource("7_lkwog")
+
+[node name="Label" type="Label" parent="Ratio"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 32.0
+text = "阵营比例："
